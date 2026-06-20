@@ -9,149 +9,169 @@
 
     <style>
         /* ==========================================================================
-           ZERO-BLOAT VANILLA CSS (AURA.BUILD PREMIUM AESTHETIC)
+           ZERO-BLOAT VANILLA CSS (AURA.BUILD PREMIUM AESTHETIC REPLICA)
            ========================================================================== */
         :root {
-            --primary: #eab308; /* Premium Gold/Yellow for Construction */
-            --primary-glow: rgba(234, 179, 8, 0.15);
-            --danger: #ef4444;
-            --danger-glow: rgba(239, 68, 68, 0.3);
-            --bg-base: #050505;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
+            --primary: #eab308;
+            --primary-glow: rgba(234, 179, 8, 0.4);
+            --secondary-glow: rgba(239, 68, 68, 0.3);
+            --bg-base: #000000;
             --text-main: #ffffff;
-            --text-muted: rgba(255, 255, 255, 0.6);
+            --text-muted: rgba(255, 255, 255, 0.7);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
         html { scroll-behavior: smooth; }
-        body { background-color: var(--bg-base); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+        body { background-color: var(--bg-base); color: var(--text-main); line-height: 1.6; overflow-x: hidden; antialiased; }
 
         /* Animated Ambient Background (Replaces heavy Spline iframe) */
         .ambient-bg {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none;
-            background: radial-gradient(circle at 50% 0%, var(--primary-glow) 0%, transparent 60%);
-            animation: pulseBg 8s ease-in-out infinite alternate;
+            background: radial-gradient(circle at 20% 30%, var(--primary-glow) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, var(--secondary-glow) 0%, transparent 40%);
+            filter: blur(60px); opacity: 0.6;
+            animation: pulseAmbient 10s ease-in-out infinite alternate;
         }
-        @keyframes pulseBg { 0% { opacity: 0.5; transform: scale(1); } 100% { opacity: 1; transform: scale(1.05); } }
+        @keyframes pulseAmbient { 0% { transform: scale(1) translate(0, 0); } 100% { transform: scale(1.1) translate(20px, -20px); } }
 
-        /* Typography */
-        h1, h2, h3 { font-weight: 700; tracking: -0.02em; line-height: 1.1; }
-        .text-gradient { background: linear-gradient(to right, #fff, #a1a1aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .highlight { color: var(--primary); text-shadow: 0 0 20px var(--primary-glow); }
-        
-        /* Layout Utilities */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-        .section { padding: 6rem 0; position: relative; }
+        /* Bottom Gradient Blur (Aura.build style) */
+        .gradient-blur { position: fixed; z-index: 5; inset: auto 0 0 0; height: 15%; pointer-events: none; backdrop-filter: blur(10px); mask: linear-gradient(to bottom, transparent 0%, black 100%); -webkit-mask: linear-gradient(to bottom, transparent 0%, black 100%); }
+
+        /* Typography & Layout */
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+        .section { padding: 6rem 0; position: relative; z-index: 10; }
         .text-center { text-align: center; }
         .lazy-render { content-visibility: auto; contain-intrinsic-size: 1px 1000px; contain: paint; }
 
-        /* Glassmorphism Components */
-        .glass-card {
-            background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border); border-radius: 1.5rem; transition: transform 0.3s ease, border-color 0.3s ease;
+        /* Animations */
+        @keyframes fadeSlideIn {
+            0% { opacity: 0; transform: translateY(30px); filter: blur(8px); }
+            100% { opacity: 1; transform: translateY(0); filter: blur(0px); }
         }
-        .glass-card:hover { transform: translateY(-5px); border-color: rgba(234, 179, 8, 0.3); }
+        @keyframes portraitFall {
+            0% { opacity: 0; transform: translateY(-100px) scale(0.5) rotate(-10deg); filter: blur(4px); }
+            60% { opacity: 1; transform: translateY(8px) scale(1.05) rotate(2deg); filter: blur(0px); }
+            80% { transform: translateY(-4px) scale(0.98) rotate(-1deg); }
+            100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); filter: blur(0px); }
+        }
+        @keyframes shimmer-mask { to { -webkit-mask-position: 200% 0; mask-position: 200% 0; } }
+        
+        .animate-fade { animation: fadeSlideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) both; }
+        .animate-shimmer-mask {
+            -webkit-mask: linear-gradient(90deg, transparent 0, #000 20%, #000 80%, transparent 200%) 0 0/200% 100% no-repeat;
+            mask: linear-gradient(90deg, transparent 0, #000 20%, #000 80%, transparent 200%) 0 0/200% 100% repeat;
+            animation: shimmer-mask 3s ease-in-out infinite both;
+        }
+
+        /* Border Gradient Effect */
+        .border-gradient { position: relative; border-radius: inherit; }
+        .border-gradient::before {
+            content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor; mask-composite: exclude;
+            background: linear-gradient(225deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.0) 50%, rgba(255, 255, 255, 0.1) 100%);
+            pointer-events: none;
+        }
+
+        /* Glass Buttons & Badges */
         .badge {
-            display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 50px;
+            display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1.25rem; border-radius: 50px;
             background: var(--glass-bg); border: 1px solid var(--glass-border); font-size: 0.875rem; color: var(--text-muted);
-            backdrop-filter: blur(10px); margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px); margin-bottom: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
+        .btn-glass {
+            display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+            padding: 1rem 2rem; border-radius: 50px; font-weight: 600; text-decoration: none; color: var(--text-main);
+            background: var(--glass-bg); backdrop-filter: blur(12px); border: 1px solid var(--glass-border);
+            transition: all 0.3s ease; position: relative; overflow: hidden;
+        }
+        .btn-glass:hover { transform: translateY(-2px); background: rgba(255,255,255,0.1); border-color: var(--primary); }
+        .btn-glow {
+            background: rgba(234, 179, 8, 0.1); color: var(--primary); border: 1px solid rgba(234, 179, 8, 0.3);
+            box-shadow: 0 0 20px rgba(234, 179, 8, 0.2);
+        }
+        .btn-glow:hover { background: var(--primary); color: #000; box-shadow: 0 0 30px rgba(234, 179, 8, 0.4); }
 
         /* Navbar */
-        .navbar {
-            position: fixed; top: 0; width: 100%; z-index: 50; padding: 1.25rem 0;
-            background: rgba(5, 5, 5, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
-        }
+        .navbar { position: fixed; top: 0; width: 100%; z-index: 50; padding: 1.25rem 0; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); }
         .navbar .container { display: flex; justify-content: space-between; align-items: center; }
         .brand { font-size: 1.25rem; font-weight: 700; color: var(--text-main); text-decoration: none; letter-spacing: -0.5px; }
-        .nav-cta { display: none; }
-        @media (min-width: 768px) { .nav-cta { display: inline-flex; } }
-
-        /* Buttons */
-        .btn {
-            display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-            padding: 0.875rem 2rem; border-radius: 50px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; cursor: pointer; border: none; font-size: 1rem;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, #eab308, #ca8a04); color: #000;
-            box-shadow: 0 0 20px rgba(234, 179, 8, 0.3); position: relative; overflow: hidden;
-        }
-        .btn-primary::after {
-            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); animation: shimmerBtn 3s infinite;
-        }
-        @keyframes shimmerBtn { 100% { left: 200%; } }
-        .btn-danger { background: var(--danger); color: #fff; box-shadow: 0 0 20px var(--danger-glow); }
-        .btn-glass { background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text-main); backdrop-filter: blur(10px); }
-        .btn-glass:hover { background: rgba(255,255,255,0.1); }
 
         /* Hero Section */
-        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding-top: 5rem; }
-        .hero h1 { font-size: clamp(2.5rem, 6vw, 5rem); margin-bottom: 1.5rem; letter-spacing: -1px; }
-        .hero-desc { font-size: clamp(1rem, 2vw, 1.25rem); color: var(--text-muted); max-width: 800px; margin: 0 auto 2.5rem; line-height: 1.8; }
-        .hero-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-top: 4rem; border-top: 1px solid var(--glass-border); padding-top: 2rem; }
-        .stat-item { display: flex; flex-direction: column; align-items: center; }
-        .stat-val { font-size: 1.5rem; font-weight: 700; color: var(--text-main); }
-        .stat-label { font-size: 0.875rem; color: var(--text-muted); }
-
-        /* Pain Point Box (Agitation) */
-        .alert-box { background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 1.5rem; padding: 2.5rem; text-align: left; position: relative; overflow: hidden; }
-        .alert-box::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--danger); }
-        .alert-list { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
-        .alert-list li { display: flex; gap: 1rem; font-size: 1.1rem; color: rgba(255,255,255,0.8); }
-
-        /* Services Carousel (CSS Snap Scroll - Zero JS) */
-        .carousel-wrapper { margin-top: 3rem; width: 100%; overflow: hidden; position: relative; }
-        .carousel { display: flex; gap: 1.5rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 2rem; scrollbar-width: none; -ms-overflow-style: none; }
-        .carousel::-webkit-scrollbar { display: none; }
-        .carousel-card { min-width: 300px; width: 80vw; max-width: 450px; scroll-snap-align: center; flex: 0 0 auto; position: relative; overflow: hidden; border-radius: 1.5rem; aspect-ratio: 4/3; }
-        .carousel-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .carousel-card:hover img { transform: scale(1.05); }
-        .card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, #000 10%, transparent 80%); display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; }
-        .card-overlay h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-
-        /* Bento Grid (USP / Why Us) */
-        .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
-        .bento-item { padding: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
-        .bento-icon { width: 50px; height: 50px; border-radius: 12px; background: rgba(234, 179, 8, 0.1); display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.5rem; border: 1px solid rgba(234, 179, 8, 0.2); }
-
-        /* FAQ & Forms */
-        .faq-item { border-bottom: 1px solid var(--glass-border); padding: 1.5rem 0; }
-        .faq-q { font-weight: 700; font-size: 1.1rem; color: var(--text-main); margin-bottom: 0.5rem; }
-        .faq-a { color: var(--text-muted); }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding-top: 6rem; }
+        .hero-title { line-height: 0.95; font-weight: 700; letter-spacing: -0.04em; margin-bottom: 1.5rem; }
+        .hero-title span { display: block; font-size: clamp(3rem, 8vw, 6rem); }
+        .inline-image {
+            width: clamp(60px, 8vw, 90px); height: clamp(60px, 8vw, 90px); object-fit: cover; border-radius: 50px;
+            border: 2px solid rgba(255,255,255,0.2); box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            display: inline-block; vertical-align: middle; margin: 0 1rem;
+            animation: portraitFall 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s both;
+        }
+        .hero-subtitle { font-size: clamp(1.1rem, 2vw, 1.25rem); color: var(--text-muted); max-width: 800px; margin: 2rem auto; line-height: 1.8; }
         
-        .form-control { width: 100%; padding: 1rem 1.5rem; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: 0.75rem; color: #fff; font-size: 1rem; margin-bottom: 1.5rem; transition: border-color 0.3s; }
-        .form-control:focus { outline: none; border-color: var(--primary); }
-        textarea.form-control { min-height: 120px; resize: vertical; }
+        .hero-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem; margin-top: 4rem; }
+        .stat-item { display: flex; align-items: center; gap: 0.75rem; color: var(--text-muted); font-size: 0.875rem; }
+
+        /* Portfolio / Services (Native CSS Snap Scroll) */
+        .carousel-wrapper { width: 100%; overflow: hidden; position: relative; margin-top: 3rem; }
+        .carousel { display: flex; gap: 2rem; overflow-x: auto; scroll-snap-type: x mandatory; padding: 2rem 1.5rem; scrollbar-width: none; -ms-overflow-style: none; }
+        .carousel::-webkit-scrollbar { display: none; }
+        .carousel-card { 
+            min-width: 85vw; max-width: 640px; scroll-snap-align: center; flex: 0 0 auto; 
+            border-radius: 1.5rem; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border);
+            aspect-ratio: 16/10; position: relative; overflow: hidden; transition: transform 0.4s ease;
+        }
+        .carousel-card:hover { transform: scale(1.02); border-color: rgba(255,255,255,0.2); }
+        .carousel-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease, filter 0.4s ease; }
+        .carousel-card:hover img { transform: scale(1.05); filter: brightness(1.1); }
+        .card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 50%); display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; }
+
+        /* Pain Point & USP (Bento Grid Style) */
+        .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+        .bento-card {
+            background: var(--glass-bg); backdrop-filter: blur(16px); border: 1px solid var(--glass-border);
+            border-radius: 1.5rem; padding: 2.5rem; position: relative; overflow: hidden; transition: transform 0.3s;
+        }
+        .bento-card:hover { transform: translateY(-5px); border-color: rgba(234, 179, 8, 0.3); }
+        .bento-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(234, 179, 8, 0.1); border: 1px solid rgba(234, 179, 8, 0.2); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem; }
 
         /* Maps Bypass Area */
-        .maps-bypass { display: block; position: relative; border-radius: 1.5rem; overflow: hidden; margin-top: 3rem; border: 1px solid var(--glass-border); aspect-ratio: 21/9; text-decoration: none; }
-        .maps-bypass img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: opacity 0.3s; }
-        .maps-bypass:hover img { opacity: 0.8; }
-        .maps-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.4); }
+        .maps-bypass {
+            display: block; position: relative; border-radius: 1.5rem; overflow: hidden; margin-top: 3rem; 
+            border: 1px solid var(--glass-border); aspect-ratio: 21/9; text-decoration: none;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .maps-bypass img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: transform 0.6s ease, opacity 0.3s; }
+        .maps-bypass:hover img { transform: scale(1.05); opacity: 0.9; }
+        .maps-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); }
+
+        /* Forms & FAQ */
+        .faq-item { border-bottom: 1px solid var(--glass-border); padding: 1.5rem 0; }
+        .faq-q { font-weight: 600; font-size: 1.1rem; color: var(--text-main); margin-bottom: 0.5rem; }
+        .faq-a { color: var(--text-muted); font-size: 0.9rem; }
+        
+        .form-control { width: 100%; padding: 1rem 1.5rem; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: 1rem; color: #fff; font-size: 1rem; margin-bottom: 1.5rem; transition: border-color 0.3s; }
+        .form-control:focus { outline: none; border-color: var(--primary); background: rgba(255,255,255,0.05); }
+        textarea.form-control { min-height: 120px; resize: vertical; }
 
         /* Footer & Silo */
-        footer { border-top: 1px solid var(--glass-border); padding: 4rem 0 2rem; margin-top: 4rem; }
+        footer { border-top: 1px solid var(--glass-border); padding: 4rem 0 2rem; margin-top: 4rem; position: relative; z-index: 10; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem; }
-        .tags-box { background: var(--glass-bg); padding: 1.5rem; border-radius: 1rem; font-size: 0.75rem; color: var(--text-muted); }
+        .tags-box { background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 1rem; font-size: 0.75rem; color: rgba(255,255,255,0.4); border: 1px solid var(--glass-border); }
         .credit { border-top: 1px solid var(--glass-border); padding-top: 2rem; text-align: center; font-size: 0.875rem; color: var(--text-muted); margin-top: 3rem; }
         .credit a { color: var(--primary); text-decoration: none; }
 
-        /* Scroll Animations (Vanilla IO) */
-        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); will-change: opacity, transform; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        /* Scroll Reveal Utility */
+        .reveal { opacity: 0; transform: translateY(40px); filter: blur(10px); transition: opacity 0.9s ease, transform 1s cubic-bezier(0.2, 0.65, 0.2, 1), filter 0.9s ease; will-change: opacity, transform, filter; }
+        .reveal.active { opacity: 1; transform: translateY(0); filter: blur(0); }
 
-        /* Sticky Mobile CTA CTA */
+        /* Sticky Mobile WA */
         .sticky-wa { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 99; animation: pulseWa 2s infinite; }
         @keyframes pulseWa { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
 
-        @media (max-width: 768px) {
-            .section { padding: 4rem 0; }
-            body { padding-bottom: 80px; }
-            .carousel-card { width: 85vw; }
-        }
+        @media (min-width: 768px) { .carousel-card { min-width: 520px; } }
     </style>
 
     <script type="application/ld+json">
@@ -215,80 +235,96 @@
 <body>
 
     <div class="ambient-bg"></div>
+    <div class="gradient-blur"><div></div></div>
 
-    <header class="navbar">
+    <header class="navbar border-gradient">
         <div class="container">
-            <a href="#" class="brand">Mandiri<span class="highlight">Bersama.</span></a>
-            <a href="#kontak" class="btn btn-glass nav-cta">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                Panggil Ahli
+            <a href="#" class="brand">MandiriBersama.</a>
+            <a href="#kontak" class="btn-glass border-gradient" style="padding: 0.5rem 1.5rem; font-size: 0.875rem;">
+                Hire Us
             </a>
         </div>
     </header>
 
-    <section class="hero reveal">
+    <section class="hero">
         <div class="container">
-            <div class="badge">⭐ Spesialis Pembongkaran Beton #1 di Bandung Raya</div>
-            <h1>JASA CORING BETON BANDUNG:<br><span class="text-gradient">POTONG & BONGKAR BAJA</span> <span class="highlight">TANPA GETARAN!</span></h1>
-            <p class="hero-desc">Jangan korbankan sisa struktur bangunan Anda dengan alat bobok manual. Kami menggunakan teknologi Diamond Cutting modern. Presisi tinggi, super cepat, dan 100% ditangani operator bersertifikat.</p>
-            
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="#kontak" class="btn btn-danger">🚨 KONSULTASI & SURVEI GRATIS</a>
-                <a href="#layanan" class="btn btn-glass">📄 LIHAT PORTOFOLIO</a>
+            <div class="badge animate-fade" style="animation-delay: 0.1s;">
+                ⭐ Spesialis Pembongkaran Beton #1 Bandung
             </div>
 
-            <div class="hero-stats">
-                <div class="stat-item"><span class="stat-val">8+</span><span class="stat-label">Tahun Pengalaman</span></div>
-                <div class="stat-item"><span class="stat-val">500+</span><span class="stat-label">Proyek Selesai</span></div>
-                <div class="stat-item"><span class="stat-val">100%</span><span class="stat-label">Bersertifikat K3</span></div>
+            <h1 class="hero-title animate-fade" style="animation-delay: 0.2s;">
+                <span style="display: flex; justify-content: center; align-items: center;">
+                    JASA CORING
+                    <img src="https://placehold.co/150x150/111/eab308/webp?text=Bor" alt="Mesin Coring Modern" class="inline-image">
+                    BETON
+                </span>
+                <span class="animate-shimmer-mask" style="color: rgba(255,255,255,0.8);">POTONG & BONGKAR BAJA</span>
+                <span>TANPA GETARAN</span>
+            </h1>
+
+            <p class="hero-subtitle animate-fade" style="animation-delay: 0.4s;">
+                Jangan korbankan sisa struktur bangunan Anda dengan alat bobok manual. Kami menggunakan teknologi Diamond Cutting modern. Presisi tinggi, super cepat, dan 100% ditangani operator bersertifikat K3.
+            </p>
+            
+            <div class="animate-fade" style="animation-delay: 0.6s; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="#kontak" class="btn-glass btn-glow border-gradient">🚨 Konsultasi & Survei Gratis</a>
+                <a href="#portfolio" class="btn-glass border-gradient">📄 Lihat Portofolio</a>
+            </div>
+
+            <div class="hero-stats animate-fade" style="animation-delay: 0.8s;">
+                <div class="stat-item"><strong>8+</strong> Tahun Pengalaman</div>
+                <div class="stat-item"><strong>500+</strong> Proyek Industri Selesai</div>
+                <div class="stat-item"><strong>100%</strong> Operator Bersertifikat K3</div>
             </div>
         </div>
     </section>
 
     <section class="section lazy-render reveal">
         <div class="container text-center" style="max-width: 800px;">
-            <h2 style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem;">PROYEK ANDA MANGKRAK KARENA <span class="highlight">PEMBONGKARAN ALOT?</span></h2>
-            <div class="alert-box glass-card">
-                <h3 style="color: #fca5a5; font-size: 1.25rem;">Hati-hati! Menggunakan alat manual (Jackhammer) menyimpan bahaya tersembunyi:</h3>
-                <ul class="alert-list">
-                    <li>❌ Getaran tinggi memicu RETAK STRUKTUR pada tulang bangunan utama.</li>
-                    <li>❌ Waktu pengerjaan molor berminggu-minggu, biaya operasional membengkak drastis.</li>
-                    <li>❌ Mata bor patah saat menembus baja keras, merusak instalasi berharga di dalam dinding.</li>
-                </ul>
+            <div class="badge">Problem Identifier</div>
+            <h2 style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 2rem; line-height: 1.2;">PROYEK ANDA MANGKRAK KARENA <span style="color: var(--danger);">PEMBONGKARAN ALOT?</span></h2>
+            
+            <div class="bento-card" style="text-align: left; background: rgba(239, 68, 68, 0.05); border-color: rgba(239, 68, 68, 0.2);">
+                <h3 style="color: #fca5a5; font-size: 1.25rem; margin-bottom: 1.5rem;">Hati-hati! Menggunakan alat manual (Jackhammer) menyimpan bahaya tersembunyi:</h3>
+                <div style="display: flex; flex-direction: column; gap: 1rem; color: var(--text-muted);">
+                    <p>❌ Getaran tinggi memicu RETAK STRUKTUR pada tulang bangunan utama.</p>
+                    <p>❌ Waktu pengerjaan molor berminggu-minggu, argo operasional membengkak drastis.</p>
+                    <p>❌ Mata bor patah saat menembus baja keras, merusak instalasi berharga di dalam dinding.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="layanan" class="section lazy-render reveal">
+    <section id="portfolio" class="section lazy-render reveal">
         <div class="container">
-            <div class="badge">Layanan Utama</div>
-            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">SOLUSI MODERN & <span class="highlight">PRESISI TINGGI</span></h2>
-            <p class="text-muted">Eksekusi demoli tingkat dewa untuk industri dan komersial di Bandung Raya.</p>
+            <div class="badge">Featured Work</div>
+            <h2 style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1rem;">Solusi <span style="color: var(--primary);">Presisi Tinggi</span></h2>
+            <p class="text-muted" style="font-size: 1.1rem;">A curated collection of our demoli engineering across Bandung.</p>
         </div>
         
         <div class="carousel-wrapper">
-            <div class="carousel container">
-                <article class="carousel-card glass-card">
-                    <img src="https://placehold.co/800x600/111/eab308/webp?text=Jasa+Coring+Beton+Bandung" alt="Jasa Coring Beton Presisi Bandung" loading="lazy">
+            <div class="carousel">
+                <article class="carousel-card border-gradient">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/591d6a3f-93a6-4185-a67b-d397be21fd6a_1600w.jpg" alt="Jasa Coring Beton Presisi Bandung" loading="lazy">
                     <div class="card-overlay">
                         <span style="font-size: 0.75rem; color: var(--primary); margin-bottom: 0.5rem; text-transform: uppercase;">01 / Presisi Tinggi</span>
-                        <h3>Jasa Coring Beton</h3>
+                        <h3 style="font-size: 1.5rem; color: #fff;">Jasa Coring Beton</h3>
                         <p class="text-muted" style="font-size: 0.875rem;">Pembuatan lubang untuk jalur pipa, kabel, dan ventilasi tanpa memicu retak samping (zero cracks).</p>
                     </div>
                 </article>
-                <article class="carousel-card glass-card">
-                    <img src="https://placehold.co/800x600/111/eab308/webp?text=Concrete+Cutting+Modern" alt="Spesialis Concrete Cutting Bandung" loading="lazy">
+                <article class="carousel-card border-gradient">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/103e9b5d-1921-4cd5-a80d-9445881f318d_1600w.webp" alt="Spesialis Concrete Cutting Bandung" loading="lazy">
                     <div class="card-overlay">
                         <span style="font-size: 0.75rem; color: var(--primary); margin-bottom: 0.5rem; text-transform: uppercase;">02 / Potongan Mulus</span>
-                        <h3>Concrete Cutting</h3>
+                        <h3 style="font-size: 1.5rem; color: #fff;">Concrete Cutting</h3>
                         <p class="text-muted" style="font-size: 0.875rem;">Pemotongan dinding beton bertulang, slab cutting lantai, dan aspal menggunakan gergaji diamond khusus.</p>
                     </div>
                 </article>
-                <article class="carousel-card glass-card">
-                    <img src="https://placehold.co/800x600/111/eab308/webp?text=Pembongkaran+Baja+Alat+Berat" alt="Pembongkaran Fondasi Mesin Pabrik" loading="lazy">
+                <article class="carousel-card border-gradient">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/564dc5fb-0d4e-42cb-9136-c3b630185122_1600w.webp" alt="Pembongkaran Fondasi Mesin Pabrik" loading="lazy">
                     <div class="card-overlay">
                         <span style="font-size: 0.75rem; color: var(--primary); margin-bottom: 0.5rem; text-transform: uppercase;">03 / Skala Besar</span>
-                        <h3>Bongkar Baja & Fondasi</h3>
+                        <h3 style="font-size: 1.5rem; color: #fff;">Bongkar Baja & Fondasi</h3>
                         <p class="text-muted" style="font-size: 0.875rem;">Eksekusi penghancuran massal fondasi pabrik dengan alat berat. Operasi ekstra cepat & bebas debu ekstrem.</p>
                     </div>
                 </article>
@@ -298,27 +334,25 @@
 
     <section class="section lazy-render reveal">
         <div class="container">
-            <h2 class="text-center" style="font-size: 2.5rem; margin-bottom: 1rem;">MENGAPA KAMI <span class="highlight">PILIHAN MUTLAK?</span></h2>
+            <div class="badge">Value Proposition</div>
+            <h2 style="font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 1rem;">Mengapa Kami <span style="color: var(--primary);">Pilihan Mutlak?</span></h2>
             
             <div class="bento-grid">
-                <div class="bento-item glass-card">
+                <div class="bento-card border-gradient">
                     <div class="bento-icon">💎</div>
-                    <h3>Diamond Cutting Tech</h3>
-                    <p class="text-muted">Menembus beton bertulang paling keras sekalipun dengan ketajaman konsisten tanpa macet.</p>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Diamond Cutting Tech</h3>
+                    <p class="text-muted" style="font-size: 0.9rem;">Menembus beton bertulang paling keras sekalipun dengan ketajaman konsisten tanpa macet.</p>
                 </div>
-                <div class="bento-item glass-card">
+                <div class="bento-card border-gradient">
                     <div class="bento-icon">🛡️</div>
-                    <h3>Zero Vibration</h3>
-                    <p class="text-muted">100% aman untuk struktur sisa di sekitarnya. Cocok untuk renovasi gedung yang beroperasi.</p>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Zero Vibration</h3>
+                    <p class="text-muted" style="font-size: 0.9rem;">100% aman untuk struktur sisa di sekitarnya. Cocok untuk renovasi gedung yang beroperasi.</p>
                 </div>
-                <div class="bento-item glass-card" style="grid-column: 1 / -1; background: rgba(234, 179, 8, 0.05); border-color: rgba(234, 179, 8, 0.3);">
-                    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 2rem;">
-                        <div>
-                            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Ekstra Cepat & Bersertifikat</h3>
-                            <p class="text-muted">Mempercepat timeline proyek drastis. Dikerjakan oleh teknisi ahli K3, bukan kuli sembarangan.</p>
-                        </div>
-                        <a href="https://wa.me/6285283212205?text=*Halo Tim PT. Mandiri Bersama. Saya butuh tim survei ke lokasi proyek saya sekarang.*" target="_blank" rel="noopener" class="btn btn-primary">📲 PANGGIL TIM SURVEI GRATIS</a>
-                    </div>
+                <div class="bento-card border-gradient" style="background: rgba(234, 179, 8, 0.05);">
+                    <div class="bento-icon" style="background: transparent; border: none;">⚡</div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Ekstra Cepat & Tersertifikasi</h3>
+                    <p class="text-muted" style="font-size: 0.9rem; margin-bottom: 1.5rem;">Mempercepat timeline proyek drastis. Dikerjakan oleh teknisi ahli K3.</p>
+                    <a href="https://wa.me/6285283212205?text=*Halo Tim PT. Mandiri Bersama. Saya butuh tim survei ke lokasi proyek saya sekarang.*" target="_blank" rel="noopener" class="btn-glass btn-glow border-gradient" style="font-size: 0.875rem; padding: 0.75rem 1.5rem;">Panggil Tim Survei</a>
                 </div>
             </div>
         </div>
@@ -326,27 +360,13 @@
 
     <section class="section lazy-render reveal">
         <div class="container">
-            <h2 class="text-center" style="font-size: 2.5rem; margin-bottom: 3rem;">BUKTI <span class="highlight">NYATA LAPANGAN</span></h2>
-            
-            <div class="bento-grid" style="margin-top: 0;">
-                <div class="glass-card" style="padding: 2rem;">
-                    <p style="font-style: italic; color: #d1d5db; margin-bottom: 1.5rem;">"Pengerjaan coring jalur pipa di Braga sangat rapi. Awalnya takut merusak struktur lama, tapi berkat metode alat modern Mandiri Bersama, tembok sisa aman tanpa retak sedikitpun."</p>
-                    <div style="border-top: 1px solid var(--glass-border); padding-top: 1rem;">
-                        <strong>Bpk. Hendra</strong><br><span style="font-size: 0.875rem; color: var(--text-muted);">Kontraktor Gedung Komersial</span>
-                    </div>
-                </div>
-                <div class="glass-card" style="padding: 2rem;">
-                    <p style="font-style: italic; color: #d1d5db; margin-bottom: 1.5rem;">"Bongkar fondasi mesin pabrik di Rancaekek selesai 3 hari lebih cepat dari jadwal. Operatornya paham K3 dan kerjanya presisi. Downtime produksi pabrik sangat minim."</p>
-                    <div style="border-top: 1px solid var(--glass-border); padding-top: 1rem;">
-                        <strong>Bpk. Taufiq</strong><br><span style="font-size: 0.875rem; color: var(--text-muted);">Manajer Pabrik</span>
-                    </div>
-                </div>
-            </div>
+            <h2 class="text-center" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem;">AREA <span style="color: var(--primary);">OPERASIONAL</span></h2>
+            <p class="text-center text-muted">Melayani seluruh Kota Bandung, Kabupaten Bandung, Cimahi, dan Bandung Barat.</p>
 
-            <a href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x2e68e5d5f0a0549b:0xe787630c66e76303?entry=gemini&utm_source=gemini&utm_campaign=gem-default" target="_blank" rel="noopener" class="maps-bypass">
-                <img src="https://placehold.co/1200x500/111/eab308/webp?text=Visual+Peta+Satelit+Bandung" alt="Rute Google Maps Jasa Coring Beton Bandung Kulon" loading="lazy">
+            <a href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x2e68e5d5f0a0549b:0xe787630c66e76303?entry=gemini&utm_source=gemini&utm_campaign=gem-default" target="_blank" rel="noopener" class="maps-bypass border-gradient">
+                <img src="Peta-lokasi-operasional-jasa-bobok-coring-potong-bongkar-beton-baja-bandung.webp" alt="Peta Lokasi Operasional Jasa Coring Beton Bandung" loading="lazy">
                 <div class="maps-overlay">
-                    <span class="btn btn-glass" style="font-size: 1.25rem;">📍 BUKA NAVIGASI GOOGLE MAPS KAMI</span>
+                    <span class="btn-glass btn-glow border-gradient" style="font-size: 1.1rem; padding: 1rem 2rem;">📍 BUKA NAVIGASI GOOGLE MAPS KAMI</span>
                 </div>
             </a>
         </div>
@@ -354,28 +374,30 @@
 
     <section id="kontak" class="section lazy-render reveal">
         <div class="container">
-            <div class="bento-grid">
+            <div class="bento-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
+                
                 <div>
-                    <div class="badge">Direct Answer</div>
-                    <h2 style="font-size: 2rem; margin-bottom: 2rem;">PERTANYAAN <span class="highlight">TERKAIT (FAQ)</span></h2>
+                    <div class="badge">Knowledge Base</div>
+                    <h2 style="font-size: 2rem; margin-bottom: 2rem;">Pertanyaan <span style="color: var(--primary);">Terkait (FAQ)</span></h2>
                     
                     <div class="faq-item">
-                        <div class="faq-q">Berapa harga jasa coring beton di Bandung per titik?</div>
+                        <div class="faq-q">Berapa harga jasa coring beton per titik?</div>
                         <div class="faq-a">Harga menyesuaikan diameter bor, ketebalan struktur, dan tingkat kesulitan. Kami sediakan survei gratis untuk estimasi transparan tanpa biaya tersembunyi.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-q">Apa bedanya pembongkaran Diamond Cutting vs Bobok Manual?</div>
-                        <div class="faq-a">Diamond cutting memotong dengan pisau putaran tinggi yang menghasilkan nol getaran sehingga struktur sisa tetap aman tanpa retak.</div>
+                        <div class="faq-q">Apa bedanya Diamond Cutting vs Bobok Manual?</div>
+                        <div class="faq-a">Diamond cutting memotong dengan pisau putaran tinggi menghasilkan nol getaran sehingga struktur sisa tetap aman. Bobok manual memicu getaran keras yang merusak tulang bangunan.</div>
                     </div>
                     <div class="faq-item" style="border-bottom: none;">
-                        <div class="faq-q">Berapa lama waktu untuk survei ke lokasi?</div>
-                        <div class="faq-a">Kecepatan adalah prioritas. Untuk area Bandung Raya, tim ahli kami akan tiba di lokasi maksimal 1x24 jam pasca panggilan WhatsApp.</div>
+                        <div class="faq-q">Berapa lama waktu survei ke lokasi?</div>
+                        <div class="faq-a">Kecepatan adalah prioritas. Untuk area Bandung Raya, tim ahli kami akan tiba di lokasi maksimal 1x24 jam pasca panggilan masuk.</div>
                     </div>
                 </div>
 
-                <div class="glass-card" style="padding: 2.5rem; background: rgba(234, 179, 8, 0.03); border: 1px solid rgba(234, 179, 8, 0.2);">
-                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">KONSULTASIKAN PROYEK ANDA!</h3>
-                    <p class="text-muted" style="margin-bottom: 2rem;">Isi formulir prioritas. Tim kami akan segera merespons dan menjadwalkan survei ke lokasi.</p>
+                <div class="bento-card border-gradient" style="background: rgba(255,255,255,0.02);">
+                    <div class="badge" style="margin-bottom: 1rem;">Let's Connect</div>
+                    <h3 style="font-size: 1.75rem; margin-bottom: 1rem;">Konsultasikan Proyek Anda!</h3>
+                    <p class="text-muted" style="margin-bottom: 2rem; font-size: 0.9rem;">Isi formulir prioritas. Tim kami akan segera merespons dan menjadwalkan survei ke lokasi.</p>
                     
                     <form action="https://api.web3forms.com/submit" method="POST">
                         <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
@@ -388,9 +410,10 @@
                         <input type="text" name="location" class="form-control" placeholder="Lokasi Proyek (Kecamatan/Kota)" required>
                         <textarea name="message" class="form-control" placeholder="Ceritakan detail pengerjaan (Contoh: Butuh coring 5 titik untuk pipa AC...)" required></textarea>
                         
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">KIRIM PERMINTAAN SURVEI 🚀</button>
+                        <button type="submit" class="btn-glass btn-glow border-gradient" style="width: 100%; border-radius: 1rem;">KIRIM PERMINTAAN SURVEI 🚀</button>
                     </form>
                 </div>
+
             </div>
         </div>
     </section>
@@ -399,9 +422,9 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--text-main);">PT. MANDIRI BERSAMA</h3>
-                    <p class="text-muted" style="font-size: 0.875rem;">Spesialis Coring, Potong & Bongkar Beton Baja Bandung Raya.</p>
-                    <p class="text-muted" style="font-size: 0.875rem; margin-top: 1rem;"><strong>Alamat:</strong> Jl. Cibuntu Barat No.37, Wr. Muncang, Kec. Bandung Kulon, Kota Bandung, Jawa Barat 40211</p>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 1rem; font-weight: 700;">PT. MANDIRI BERSAMA</h3>
+                    <p class="text-muted" style="font-size: 0.875rem; line-height: 1.8;">Award-winning Demolition & Coring Specialist. Menciptakan presisi tinggi untuk proyek komersial dan industri.</p>
+                    <p class="text-muted" style="font-size: 0.875rem; margin-top: 1rem;"><strong>Alamat:</strong> Jl. Cibuntu Barat No.37, Wr. Muncang, Kec. Bandung Kulon</p>
                     <p class="text-muted" style="font-size: 0.875rem;"><strong>Telepon:</strong> 085283212205</p>
                 </div>
                 <div>
@@ -440,10 +463,11 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
+                        // Optional: unobserve if you only want the animation to happen once
+                        // observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+            }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
             
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         });
