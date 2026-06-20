@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jasa Coring Beton Bandung & Pembongkaran Baja #1. Presisi, tanpa getaran merusak, operator bersertifikat. Solusi proyek cepat tanpa retak struktur. Hubungi PT. Mandiri Bersama sekarang!">
+    <meta name="keywords" content="Jasa Coring Beton Bandung, spesialis pembongkaran beton, harga coring beton, tukang potong beton, vendor concrete cutting, ahli bongkar baja">
+    <title>JASA CORING BETON BANDUNG: Potong & Bongkar Tanpa Getaran | PT. Mandiri Bersama</title>
+    
+    <style>
+        :root {
+            --primary: #eab308; /* Yellow */
+            --primary-dark: #ca8a04;
+            --secondary: #111111; /* Black/Dark */
+            --danger: #dc2626; /* Red */
+            --danger-hover: #b91c1c;
+            --text-light: #f3f4f6;
+            --text-dark: #1f2937;
+            --bg-light: #ffffff;
+            --bg-gray: #f9fafb;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+        
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+
+        /* Typography */
+        h1, h2, h3 { line-height: 1.2; margin-bottom: 1rem; color: var(--secondary); }
+        h1 { font-size: 2.25rem; font-weight: 900; text-transform: uppercase; color: var(--text-light); }
+        h2 { font-size: 2rem; font-weight: 800; text-align: center; }
+        h3 { font-size: 1.25rem; font-weight: 700; }
+        p { margin-bottom: 1rem; }
+
+        /* Utilities */
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+        .text-center { text-align: center; }
+        .highlight { color: var(--primary); }
+        .lazy-render { content-visibility: auto; contain-intrinsic-size: 1px 1000px; contain: paint; }
+
+        /* Buttons */
+        .btn { display: inline-block; padding: 1rem 2rem; font-weight: 700; border-radius: 0.5rem; text-decoration: none; text-align: center; transition: all 0.3s ease; border: none; cursor: pointer; width: 100%; max-width: 400px; }
+        .btn-danger { background-color: var(--danger); color: var(--text-light); box-shadow: 0 4px 6px -1px rgba(220, 38, 38, 0.4); }
+        .btn-danger:hover { background-color: var(--danger-hover); }
+        .btn-outline { background-color: transparent; border: 2px solid var(--primary); color: var(--primary); }
+        .btn-outline:hover { background-color: var(--primary); color: var(--secondary); }
+        .btn-wa { background-color: #25D366; color: white; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; animation: pulse 2s infinite; }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Navigation */
+        .navbar { position: fixed; top: 0; width: 100%; background-color: rgba(17, 17, 17, 0.95); backdrop-filter: blur(5px); z-index: 1000; border-bottom: 2px solid var(--primary); padding: 1rem 0; }
+        .navbar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .navbar-brand { color: var(--primary); font-size: 1.5rem; font-weight: 900; text-decoration: none; letter-spacing: 1px; }
+        .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+        .nav-links a { color: var(--text-light); text-decoration: none; font-weight: 600; }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-cta { background-color: var(--primary); color: var(--secondary); padding: 0.5rem 1.5rem; border-radius: 0.25rem; font-weight: 800; text-decoration: none; }
+
+        /* Hero Section */
+        .hero { background: linear-gradient(rgba(17, 17, 17, 0.85), rgba(17, 17, 17, 0.95)), url('https://placehold.co/1920x1080/111/eab308/webp?text=Hero+Background+Coring+Beton') center/cover no-repeat; padding: 10rem 0 6rem; color: var(--text-light); text-align: center; }
+        .badge { display: inline-block; background-color: var(--primary); color: var(--secondary); padding: 0.25rem 1rem; border-radius: 50px; font-weight: 800; margin-bottom: 1.5rem; text-transform: uppercase; font-size: 0.875rem; }
+        .hero-sub { font-size: 1.25rem; max-width: 800px; margin: 0 auto 2.5rem; color: #d1d5db; }
+        .hero-buttons { display: flex; flex-direction: column; gap: 1rem; align-items: center; justify-content: center; margin-bottom: 2rem; }
+        @media(min-width: 768px) { .hero-buttons { flex-direction: row; } }
+        .micro-copy { font-size: 0.875rem; color: #9ca3af; font-style: italic; }
+
+        /* Trust Badge */
+        .trust-strip { background-color: var(--primary); padding: 1.5rem 0; text-align: center; }
+        .trust-strip p { font-weight: 800; color: var(--secondary); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .trust-logos { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+        .trust-logos div { background: var(--secondary); color: var(--text-light); padding: 0.5rem 1rem; border-radius: 4px; font-weight: bold; font-size: 0.875rem; }
+
+        /* Section Spacing */
+        .section { padding: 5rem 0; }
+        .bg-gray { background-color: var(--bg-gray); }
+
+        /* Pain Point */
+        .pain-point-box { background-color: #fee2e2; border: 2px solid var(--danger); border-radius: 1rem; padding: 2.5rem; margin-top: 2rem; }
+        .pain-point-list { list-style: none; margin: 2rem 0; }
+        .pain-point-list li { font-size: 1.125rem; margin-bottom: 1rem; padding-left: 2rem; position: relative; font-weight: 600; color: #7f1d1d; }
+        .pain-point-list li::before { content: '❌'; position: absolute; left: 0; top: 0; }
+        .stop-loss { font-size: 1.5rem; font-weight: 800; color: var(--danger); text-align: center; text-transform: uppercase; }
+
+        /* Services Grid */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .service-card { background: var(--bg-light); border-radius: 1rem; padding: 2.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border-top: 4px solid var(--primary); transition: transform 0.3s; }
+        .service-card:hover { transform: translateY(-5px); }
+        .service-icon { font-size: 3rem; margin-bottom: 1.5rem; }
+
+        /* USP */
+        .usp-list { max-width: 800px; margin: 3rem auto; list-style: none; }
+        .usp-list li { background: var(--secondary); color: var(--text-light); margin-bottom: 1rem; padding: 1.25rem 1.5rem; border-radius: 0.5rem; display: flex; align-items: center; font-size: 1.125rem; border-left: 5px solid var(--primary); }
+        .usp-list li strong { color: var(--primary); margin-right: 0.5rem; }
+        .cta-banner { background-color: var(--secondary); color: var(--text-light); padding: 3rem; border-radius: 1rem; text-align: center; margin-top: 3rem; border: 2px dashed var(--primary); }
+        .cta-banner p { font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 1.5rem; }
+
+        /* Testimonials */
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .testimonial-card { background: var(--bg-light); padding: 2rem; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); position: relative; border: 1px solid #e5e7eb; }
+        .testimonial-card::before { content: '"'; position: absolute; top: 10px; right: 20px; font-size: 4rem; color: #f3f4f6; font-family: serif; line-height: 1; }
+        .client-name { font-weight: 800; color: var(--secondary); margin-top: 1rem; border-top: 2px solid var(--primary); padding-top: 1rem; }
+        .client-role { font-size: 0.875rem; color: #6b7280; }
+
+        /* Maps Bypass */
+        .maps-bypass { margin-top: 3rem; border-radius: 1rem; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); display: block; position: relative; }
+        .maps-bypass img { width: 100%; height: auto; display: block; transition: transform 0.3s; }
+        .maps-bypass:hover img { transform: scale(1.02); }
+        .maps-overlay { position: absolute; inset: 0; background: rgba(17,17,17,0.4); display: flex; align-items: center; justify-content: center; }
+        .maps-btn { background: var(--danger); color: white; padding: 1rem 2rem; font-weight: 800; border-radius: 50px; font-size: 1.25rem; }
+
+        /* FAQ */
+        .faq-item { border-bottom: 1px solid #e5e7eb; padding: 1.5rem 0; }
+        .faq-q { font-weight: 800; color: var(--secondary); font-size: 1.125rem; margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem; }
+        .faq-a { color: #4b5563; padding-left: 2rem; }
+
+        /* Forms */
+        .form-section { background-color: var(--secondary); color: var(--text-light); padding: 4rem 0; }
+        .form-section h2 { color: var(--primary); }
+        .form-container { background: rgba(255,255,255,0.05); padding: 2.5rem; border-radius: 1rem; max-width: 600px; margin: 0 auto; border: 1px solid rgba(234, 179, 8, 0.2); }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-control { width: 100%; padding: 1rem; border-radius: 0.5rem; border: none; background: #fff; color: #111; font-family: inherit; }
+        textarea.form-control { resize: vertical; min-height: 120px; }
+
+        /* Footer & Silo */
+        .footer { background-color: #000; color: #9ca3af; padding: 4rem 0 2rem; font-size: 0.875rem; }
+        .footer h3 { color: var(--primary); margin-bottom: 1rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+        .tags-container { background: #111; padding: 1.5rem; border-radius: 0.5rem; margin-top: 2rem; }
+        .tags-container p { font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+        .tags-list { color: #6b7280; font-size: 0.75rem; }
+        .credit { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #333; }
+        .credit a { color: var(--primary); text-decoration: none; font-weight: bold; }
+
+        /* Sticky Mobile CTA & Proteksi Agensi */
+        .sticky-wa { position: fixed; bottom: 20px; right: 20px; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 9999; animation: pulse 2s infinite; text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            h1 { font-size: 1.75rem; }
+            h2 { font-size: 1.5rem; }
+            body { padding-bottom: 120px !important; }
+            .hero { padding: 8rem 0 4rem; }
+        }
+    </style>
+
+    <!-- God-Tier JSON-LD (3-Node) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://jasa-coring-potong-bongkar-beton-baja-bandung.vercel.app/#localbusiness",
+          "name": "PT. Mandiri Bersama",
+          "description": "Spesialis Coring, Pemotongan (Concrete Cutting), dan Pembongkaran Beton Baja di Bandung Raya. Presisi tinggi, tanpa getaran merusak, operator bersertifikat.",
+          "url": "https://jasa-coring-potong-bongkar-beton-baja-bandung.vercel.app/",
+          "telephone": "+6285283212205",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Jl. Cibuntu Barat No.37, Wr. Muncang, Kec. Bandung Kulon",
+            "addressLocality": "Kota Bandung",
+            "addressRegion": "Jawa Barat",
+            "postalCode": "40211",
+            "addressCountry": "ID"
+          },
+          "priceRange": "$$",
+          "sameAs": [
+            "https://www.google.com/maps/place//data=!4m2!3m1!1s0x2e68e5d5f0a0549b:0xe787630c66e76303?entry=gemini&utm_source=gemini&utm_campaign=gem-default"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://jasa-coring-potong-bongkar-beton-baja-bandung.vercel.app/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Berapa harga jasa coring beton di Bandung per titik?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Harga jasa coring beton di Bandung bervariasi menyesuaikan diameter lubang, ketebalan struktur beton, dan tingkat kesulitan area pengerjaan. Kami menyediakan survei gratis untuk memberikan estimasi biaya yang transparan dan akurat sesuai kebutuhan spesifik proyek Anda."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Apa bedanya pembongkaran dengan Diamond Cutting vs Bobok Manual?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Diamond cutting menggunakan pisau berlian putaran tinggi yang memotong beton tanpa getaran (zero vibration) sehingga struktur sisa tidak retak. Sebaliknya, bobok manual (jackhammer) menghasilkan getaran ekstrem yang berisiko merusak integritas fondasi bangunan utama."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Apakah melayani pemotongan struktur beton untuk area perumahan padat?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Ya, kami sangat direkomendasikan untuk area perumahan padat karena metode diamond cutting kami menghasilkan tingkat kebisingan yang jauh lebih rendah dan minim debu dibandingkan metode pembongkaran tradisional."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Berapa lama waktu yang dibutuhkan untuk survei ke lokasi proyek?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Tim PT. Mandiri Bersama menjamin respons super cepat. Untuk area Bandung Raya (Kota Bandung, Kabupaten Bandung, Cimahi, dan Bandung Barat), tim survei kami siap merapat ke lokasi dalam waktu maksimal 1x24 jam setelah Anda menghubungi kami via WhatsApp."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://jasa-coring-potong-bongkar-beton-baja-bandung.vercel.app/#webpage",
+          "url": "https://jasa-coring-potong-bongkar-beton-baja-bandung.vercel.app/",
+          "name": "JASA CORING BETON BANDUNG: Potong & Bongkar Tanpa Getaran",
+          "isPartOf": { "@id": "https://jasa-coring-potong-bongkar-beton-baja-bandung.vercel.app/#localbusiness" },
+          "relatedLink": [
+            "https://dongkrakusaha.com/layanan-jasa-coring-beton-bandung-bandung-kulon",
+            "https://dongkrakusaha.com/layanan-jasa-coring-beton-bandung-andir",
+            "https://dongkrakusaha.com/layanan-jasa-coring-beton-bandung-babakan-ciparay",
+            "https://dongkrakusaha.com/layanan-jasa-coring-beton-bandung-bojongloa-kaler",
+            "https://dongkrakusaha.com/layanan-jasa-coring-beton-bandung-astanaanyar",
+            "https://dongkrakusaha.com/layanan-jasa-coring-beton-bandung-cimahi",
+            "https://dongkrakusaha.com/layanan-jasa-coring-beton-bandung-margahayu"
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="navbar-brand">PT. MANDIRI BERSAMA</a>
+            <div class="nav-links">
+                <a href="#solusi">Layanan</a>
+                <a href="#usp">Keunggulan</a>
+                <a href="#faq">FAQ</a>
+                <a href="#kontak" class="nav-cta">📞 HUBUNGI KAMI</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <span class="badge">⭐ Spesialis Pembongkaran Beton #1 di Bandung Raya</span>
+            <h1>JASA CORING BETON BANDUNG:<br><span class="highlight">POTONG & BONGKAR BETON BAJA TANPA GETARAN MERUSAK!</span></h1>
+            <p class="hero-sub">Jangan korbankan sisa struktur bangunan Anda dengan alat bobok manual. Kami menggunakan teknologi Diamond Cutting modern. Presisi tinggi, ekstra cepat, dan 100% ditangani operator bersertifikat.</p>
+            
+            <div class="hero-buttons">
+                <a href="https://wa.me/6285283212205?text=*Halo Admin PT. Mandiri Bersama, saya butuh jasa coring beton secepatnya. Mohon info untuk survei gratis.*" target="_blank" rel="noopener" class="btn btn-danger">🚨 KONSULTASI & SURVEI GRATIS SEKARANG</a>
+                <a href="#solusi" class="btn btn-outline">📄 LIHAT LAYANAN KAMI</a>
+            </div>
+            <p class="micro-copy">*Telah dipercaya oleh 500+ proyek industri & komersial se-Jawa Barat.</p>
+        </div>
+    </header>
+
+    <!-- Trust Badge -->
+    <div class="trust-strip">
+        <div class="container">
+            <p>Dipercaya Oleh Klien Industri & Konstruksi Terkemuka</p>
+            <div class="trust-logos">
+                <div>Pabrik Tekstil Rancaekek</div>
+                <div>Gedung Komersial Dago</div>
+                <div>Kontraktor BUMN Jabar</div>
+                <div>Pengelola Kawasan Industri Cimahi</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pain Point Section -->
+    <section class="section">
+        <div class="container">
+            <h2>PROYEK ANDA MANGKRAK KARENA <span class="highlight">PEMBONGKARAN ALOT?</span></h2>
+            
+            <div class="pain-point-box">
+                <p style="font-size: 1.25rem; font-weight: 700; text-align: center;">Hati-hati! Menggunakan alat manual (Jackhammer) atau vendor abal-abal menyimpan bahaya tersembunyi:</p>
+                <ul class="pain-point-list">
+                    <li>Getaran tinggi memicu RETAK STRUKTUR pada tulang bangunan utama yang membahayakan nyawa.</li>
+                    <li>Waktu pengerjaan molor berminggu-minggu, argo jalan terus, biaya operasional membengkak drastis.</li>
+                    <li>Mata bor patah saat menembus baja keras, merusak instalasi pipa/kabel berharga di dalam dinding.</li>
+                </ul>
+                <p class="stop-loss">HENTIKAN KERUGIAN INI SEKARANG JUGA!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services / Solusi -->
+    <section id="solusi" class="section bg-gray lazy-render">
+        <div class="container">
+            <h2>KAMI HADIR MEMBAWA <span class="highlight">SOLUSI MODERN & PRESISI TINGGI</span></h2>
+            <p class="text-center" style="max-width: 700px; margin: 0 auto;">Sebagai spesialis Jasa Coring Beton Bandung, buatkan hooks dengan keyword yang relevan sesuai dengan niche: Cari ahli potong beton yang menjamin integritas struktur? PT. Mandiri Bersama adalah jawaban mutlak untuk kebutuhan demoli tingkat dewa.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Jasa Coring Beton</h3>
+                    <p>Pembuatan lubang presisi untuk jalur pipa plumbing, kabel listrik, AC, dan ventilasi. Dijamin tembus rapi tanpa retak rambut di area sekeliling lubang.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Concrete Cutting</h3>
+                    <p>Pemotongan dinding beton bertulang, bukaan lantai (slab cutting), dan aspal jalan raya menggunakan gergaji diamond khusus dengan hasil potongan lurus dan mulus.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏗️</div>
+                    <h3>Pembongkaran Baja & Fondasi</h3>
+                    <p>Eksekusi penghancuran massal fondasi mesin pabrik atau pilar jembatan dengan alat berat termodern. Operasi ekstra cepat dengan kontrol debu yang ketat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us / USP -->
+    <section id="usp" class="section lazy-render">
+        <div class="container">
+            <h2>MENGAPA PT. MANDIRI BERSAMA ADALAH <span class="highlight">PILIHAN MUTLAK?</span></h2>
+            
+            <ul class="usp-list">
+                <li><strong>✅ Teknologi Diamond Cutting:</strong> Menembus beton bertulang paling keras sekalipun dengan ketajaman konsisten tanpa macet.</li>
+                <li><strong>✅ Tanpa Getaran (Zero Vibration):</strong> 100% aman untuk struktur sisa di sekitarnya. Cocok untuk renovasi gedung yang sedang beroperasi.</li>
+                <li><strong>✅ Ekstra Cepat & Tepat Waktu:</strong> Mempercepat timeline proyek, mengurangi downtime pabrik atau gedung komersial secara drastis.</li>
+                <li><strong>✅ Operator Bersertifikat K3:</strong> Dikerjakan oleh teknisi ahli tersertifikasi, bukan kuli sembarangan. Jaminan standar keselamatan kerja tinggi.</li>
+                <li><strong>✅ Siap Survei Se-Bandung Raya:</strong> Meliputi Kota Bandung, Kabupaten Bandung, Cimahi, hingga pelosok Kabupaten Bandung Barat (GRATIS!).</li>
+            </ul>
+
+            <div class="cta-banner">
+                <p>Waktu Berjalan, Argo Proyek Terus Berputar!</p>
+                <a href="https://wa.me/6285283212205?text=*Halo Tim PT. Mandiri Bersama. Saya butuh tim survei ke lokasi proyek saya sekarang.*" target="_blank" rel="noopener" class="btn btn-wa">📲 PANGGIL TIM SURVEI KE LOKASI SAYA SEKARANG!</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimoni & Maps Bypass -->
+    <section class="section bg-gray lazy-render">
+        <div class="container">
+            <h2>BUKTI NYATA <span class="highlight">KINERJA KAMI DI LAPANGAN</span></h2>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"Pengerjaan coring untuk jalur pipa gedung komersial kami di Braga sangat rapi. Awalnya takut merusak struktur lama, tapi berkat metode alat modern dari Mandiri Bersama, tembok sisa aman tanpa retak sedikitpun. Luar biasa!"</p>
+                    <div class="client-name">Bpk. Hendra</div>
+                    <div class="client-role">Kontraktor Gedung Komersial, Bandung</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Bongkar fondasi mesin pabrik di Rancaekek selesai 3 hari lebih cepat dari jadwal. Operatornya paham K3 dan kerjanya sangat presisi. Downtime produksi pabrik kami jadi sangat minim. Recommended vendor untuk spesialis bongkar beton!"</p>
+                    <div class="client-name">Bpk. Taufiq</div>
+                    <div class="client-role">Manajer Pabrik, Kabupaten Bandung</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Potong beton untuk renovasi rumah sakit di Cimahi tanpa getaran bising yang ganggu pasien. Kerjanya bersih, cepat, dan adminnya responsif banget pas diminta survei dadakan. Harga sangat sepadan dengan kualitas."</p>
+                    <div class="client-name">Ibu Siska</div>
+                    <div class="client-role">Pemborong Renovasi, Cimahi</div>
+                </div>
+            </div>
+
+            <!-- Maps Bypass -->
+            <a href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x2e68e5d5f0a0549b:0xe787630c66e76303?entry=gemini&utm_source=gemini&utm_campaign=gem-default" target="_blank" rel="noopener" class="maps-bypass">
+                <img src="https://placehold.co/1200x500/111/eab308/webp?text=Klik+Untuk+Navigasi+Rute+Google+Maps+-+PT.+Mandiri+Bersama" alt="Rute Google Maps Jasa Coring Beton Bandung Kulon">
+                <div class="maps-overlay">
+                    <span class="maps-btn">📍 BUKA PETUNJUK ARAH MAPS KAMI</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- FAQ & AEO Injection -->
+    <section id="faq" class="section lazy-render">
+        <div class="container" style="max-width: 800px;">
+            <h2>PERTANYAAN <span class="highlight">TERKAIT (FAQ)</span></h2>
+            
+            <div class="faq-item">
+                <div class="faq-q"><span>[+]</span> Berapa harga jasa coring beton di Bandung per titik?</div>
+                <div class="faq-a">Harga menyesuaikan diameter bor, ketebalan struktur, dan tingkat kesulitan area. Kami menyediakan layanan survei gratis se-Bandung Raya untuk estimasi biaya transparan, akurat, dan tanpa biaya tersembunyi.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q"><span>[+]</span> Apa bedanya pembongkaran dengan Diamond Cutting vs Bobok Manual?</div>
+                <div class="faq-a">Diamond cutting memotong dengan pisau putaran tinggi yang menghasilkan nol getaran (zero vibration) sehingga struktur sisa tetap aman tanpa retak. Bobok manual (jackhammer) memicu getaran keras yang merusak tulang bangunan.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q"><span>[+]</span> Apakah melayani pemotongan struktur beton untuk area perumahan padat?</div>
+                <div class="faq-a">Tentu. Teknologi potong dan coring modern kami didesain rendah kebisingan dan minim debu, sangat ideal dan aman diaplikasikan untuk perumahan padat, rumah sakit, maupun mall yang sedang beroperasi.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q"><span>[+]</span> Berapa lama waktu yang dibutuhkan untuk survei ke lokasi proyek?</div>
+                <div class="faq-a">Kecepatan adalah prioritas kami. Untuk area Kota Bandung, Kabupaten Bandung, Cimahi, dan Bandung Barat, tim ahli kami akan tiba di lokasi maksimal 1x24 jam pasca panggilan WhatsApp masuk.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Web3Forms Lead Catcher -->
+    <section id="kontak" class="form-section lazy-render">
+        <div class="container">
+            <h2 class="text-center">KONSULTASIKAN MASALAH <span class="highlight">PROYEK ANDA!</span></h2>
+            <p class="text-center" style="margin-bottom: 2rem;">Isi formulir prioritas di bawah ini. Tim ahli PT. Mandiri Bersama akan segera merespons dan menjadwalkan survei ke lokasi Anda.</p>
+            
+            <div class="form-container">
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <!-- Ganti value ini dengan Access Key Web3Forms Asli -->
+                    <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+                    <input type="hidden" name="redirect" value="https://wa.me/6285283212205?text=*Halo Admin PT. Mandiri Bersama, saya sudah mengisi formulir di website. Tolong bantu masalah proyek saya agar tidak mangkrak. Butuh tim survei coring beton secepatnya...*">
+                    <input type="hidden" name="subject" value="Leads Baru dari Mothership Jasa Coring Bandung">
+                    <input type="checkbox" name="botcheck" style="display: none;">
+
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="Nama Anda / Perusahaan" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" class="form-control" placeholder="Nomor WhatsApp Aktif" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="location" class="form-control" placeholder="Lokasi Proyek (Kecamatan/Kota)" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" class="form-control" placeholder="Ceritakan detail pengerjaan: (Contoh: Butuh coring 5 titik untuk pipa AC lantai 2...)" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-danger">KIRIM PERMINTAAN SURVEI SEKARANG 🚀</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Silo Anchor -->
+    <footer class="footer lazy-render">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>PT. MANDIRI BERSAMA</h3>
+                    <p>Spesialis Coring, Potong & Bongkar Beton Baja Bandung Raya.</p>
+                    <p><strong>Alamat:</strong> Jl. Cibuntu Barat No.37, Wr. Muncang, Kec. Bandung Kulon, Kota Bandung, Jawa Barat 40211</p>
+                    <p><strong>Telepon/WA:</strong> 085283212205</p>
+                </div>
+                <div>
+                    <h3>AREA LAYANAN UTAMA</h3>
+                    <ul>
+                        <li>Kota Bandung</li>
+                        <li>Kabupaten Bandung</li>
+                        <li>Kota Cimahi</li>
+                        <li>Kabupaten Bandung Barat</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>ARTIKEL EDUKASI & KOTA</h3>
+                    <p class="micro-copy">Jangan ambil risiko membahayakan konstruksi bangunan dengan metode pembongkaran yang asal-asalan. Percayakan kebutuhan jasa coring beton Bandung dan pemotongan struktur baja Anda hanya pada ahlinya yang menjamin hasil rapi tanpa getaran merusak. Segera amankan jadwal proyek Anda dan konsultasikan langsung bersama <a href="https://jasa-coring-potong-bongkar-beton-baja-bandung.vercel.app/" style="color: var(--primary);">PT. Mandiri Bersama</a> untuk eksekusi yang cepat, presisi, dan 100% aman hari ini juga!</p>
+                </div>
+            </div>
+
+            <!-- Proteksi Agensi & Visible LSI -->
+            <div class="tags-container">
+                <p>Pencarian Terkait (Tags):</p>
+                <div class="tags-list">
+                    jasa coring beton bandung | tukang potong beton presisi | spesialis concrete cutting | harga coring beton bandung kulon | jasa potong dinding andir | ahli bongkar beton babakan ciparay | vendor coring bojongloa kaler | alat potong beton modern astanaanyar | pemborong coring tanpa retak cimahi | jasa concrete cutting margahayu | spesialis bongkar baja bandung | jasa coring pipa plumbing | pembongkaran fondasi mesin pabrik
+                </div>
+            </div>
+
+            <div class="credit">
+                &copy; 2026 PT. Mandiri Bersama. All Rights Reserved. <br>
+                SEO & Web Development by <a href="https://ciledugpromo.biz.id" target="_blank" rel="nofollow noopener noreferrer">ciledugpromo.biz.id</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Floating WA -->
+    <a href="https://wa.me/6285283212205?text=*Halo PT. Mandiri Bersama, saya menemukannya di website. Butuh bantuan jasa potong/coring beton untuk proyek saya.*" class="sticky-wa" target="_blank" rel="noopener" aria-label="Hubungi WhatsApp Kami">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c-.003 1.396.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+        </svg>
+    </a>
+
+</body>
+</html>
